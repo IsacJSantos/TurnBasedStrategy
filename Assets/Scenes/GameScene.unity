@@ -777,6 +777,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1664044096}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1664044098 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95787105524477528, guid: 2f3e27eecb190e44a9af50723c394274,
+    type: 3}
+  m_PrefabInstance: {fileID: 1664044096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1667085849
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddd6bab1a76db243abc3043fbd0cdf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 10
+  unitAnimator: {fileID: 1664044098}
 --- !u!1 &1800427360
 GameObject:
   m_ObjectHideFlags: 0
