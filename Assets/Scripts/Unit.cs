@@ -9,13 +9,13 @@ public class Unit : MonoBehaviour
     private Animator unitAnimator;
     private Vector3 targetPosition;
 
+    private void Awake()
+    {
+        targetPosition = transform.position;
+    }
+
     private void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Move(MouseWorld.GetPosition());
-        }
-
 
         float stoppingDistance = .1f;
         if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    private void Move(Vector3 targetPosition)
+    public void Move(Vector3 targetPosition)
     {
         this.targetPosition = targetPosition;
     }
