@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    [SerializeField]
+    private Animator unitAnimator;
     private Vector3 targetPosition;
 
     private void Update()
@@ -11,13 +13,18 @@ public class Unit : MonoBehaviour
             Move(MouseWorld.GetPosition());
         }
 
-        float stoppingDistance = .1f; 
+       
+        float stoppingDistance = .1f;
         if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
         {
             Vector3 moveDirection = (targetPosition - transform.position).normalized;
             float moveSpeed = 4.0f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
-
+            unitAnimator.SetBool("IsWalking", true);
+        }
+        else 
+        {
+            unitAnimator.SetBool("IsWalking", false);
         }
 
     }
