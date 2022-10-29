@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitActionSystem : MonoBehaviour
 {
+    private event EventHandler OnSelectedUnitChanged;
+
     [SerializeField]
     private Unit selectedUnit;
 
@@ -19,6 +22,11 @@ public class UnitActionSystem : MonoBehaviour
         }
     }
 
+    public Unit GetSelectedUnit() 
+    {
+        return selectedUnit;
+    }
+
     private bool TryHandleUnitSelection()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -26,7 +34,7 @@ public class UnitActionSystem : MonoBehaviour
         {
             if (hit.transform.TryGetComponent(out Unit unit))
             {
-                selectedUnit = unit;
+                SetSelectedUnit(unit);
                 return true;
             }
 
@@ -34,4 +42,11 @@ public class UnitActionSystem : MonoBehaviour
 
         return false;
     }
+
+    void SetSelectedUnit(Unit unit) 
+    {
+        selectedUnit = unit;
+        OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
+    }
+
 }
