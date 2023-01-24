@@ -48,6 +48,7 @@ public class UnitActionSystem : MonoBehaviour
                 SetSelectedUnit(unit);
                 return true;
             }
+            else return false;
 
         }
 
